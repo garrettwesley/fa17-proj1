@@ -27,7 +27,20 @@
 
 For this project, we will have high-level project instructions in the first section of this readme. If you find yourself confused about how to implement a specific step, there are more detailed instructions/hints in the second section of the readme that you can reference, however try to tackle each step yourselves first before referencing the hints.
 
-Please make sure you consistently keep your repo up to date by running `git pull origin master`. If you're having bundle install issues, please refer to Piazza for help. You can try `bundle install --without production` if it's a pg gem issue.
+If you're having bundle install issues, please refer to Piazza for help. You can try `bundle install --without production` if it's a pg gem issue.
+
+Additionally, please make sure you consistently keep your repo up to date. In order to sync your repository with ours:
+```
+# Do this line below once
+git remote add upstream git@github.com:rails-decal/fa17-proj1.git
+
+# The line below is not needed if you are already on master branch
+git checkout master 
+
+git pull upstream master
+```
+If you are seeing permission denied errors, try replacing the first line with:
+`git remote add upstream https://github.com/rails-decal/fa17-proj1.git`
 
 **Note:** The skeleton project we have created for you already implements sign up and sign in. Though this course will not cover the details of sign up and sign in, we know many of you will want to have sign up and sign in for your final projects, so here is the [link to a really simple and quick way to setup an entire Rails app with user authentication (and frontend framework) already implemented](https://github.com/RailsApps/rails-devise#generate). This is what we used to create the foundation of this project!
 
@@ -56,7 +69,8 @@ In ANSWERS.md, answer Question 0.
   - level: integer
   - trainer_id: integer
 - After you've generated the model, migrate it into the database.
-- Edit your Pokemon.rb and Trainer.rb file so that a Pokemon belongs to a Trainer and a Trainer can have many Pokemon.
+- Edit your Pokemon.rb and Trainer.rb file so that a Pokemon *optionally* belongs to a Trainer and a Trainer can have many Pokemon.
+In order to have the optional of wild, trainerless Pokemon, we will need the line: `belongs_to :trainer, optional: true`.
 - Create a controller for your Pokemon model. This should be an empty controller for now, just make the file.
 - Seed your database with starter Pokemon with the seed file we've provided.
 
