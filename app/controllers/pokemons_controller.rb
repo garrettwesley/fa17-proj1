@@ -41,7 +41,7 @@ class PokemonsController < ApplicationController
     def heal
         pokemon = Pokemon.find(params[:id])
         pokemon.health += 10
-        pokemon.save
+        pokemon.update(health: pokemon.health)
         redirect_to trainer_path(pokemon.trainer.id)
 
     end
